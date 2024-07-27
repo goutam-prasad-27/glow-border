@@ -1,0 +1,132 @@
+ /*? THE GOOGLE FONT LINK */
+@import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
+* {
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	font-family: "Allura", cursive;
+	 /*? THE CURSOR LINK */ 
+	cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" viewBox="0 0 24 24"><path fill="%23FFF" stroke="%23000" stroke-width="0.25" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"></path></svg>'),
+		auto;
+}
+
+/*? ALL THE COLORS ARE CONVERTED INTO VARIABLES FOR CONVENIENCE */
+:root {
+	--background: linear-gradient(135deg, #051a46, #321856 60%);
+	--imgBox: linear-gradient(-45deg, #051a46, #321856 40%);
+
+	--offWhite: #d8d8d8;
+	--BrightPink: #f40076;
+	--lightYellow: #c8e9a0;
+	--lightGreen: #7ef29d;
+}
+/*? THE ROTATE FUNCTION ALSO CONVERTED INTO A VARIABLE FOR CONVENIENCE */
+@property --rotate {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: true;
+}
+
+body {
+	min-height: 100vh;
+	background: var(--background);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.wrapper {
+	position: relative;
+	background: var(--imgBox);
+	width: 300px;
+	height: 450px;
+	padding: 3px;
+	border-radius: 5px;
+	margin: 50px;
+}
+
+.wrapper::after,
+.wrapper::before {
+	content: "";
+	position: absolute;
+	width: 104%;
+	height: 102%;
+	background-image: linear-gradient(
+		var(--rotate),
+		var(--BrightPink),
+		var(--lightGreen),
+		var(--lightYellow),
+		var(--BrightPink)
+	);
+	border-radius: 6px;
+	z-index: -1;
+	left: -2%;
+	top: -1%;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+.wrapper::after {
+	filter: blur(40px);
+}
+.wrapper:hover::after,
+.wrapper:hover::before {
+	opacity: 1;
+	animation: spin 2s linear infinite;
+}
+@keyframes spin {
+	to {
+		--rotate: 360deg;
+	}
+}
+
+/*? MAIN BACKGROUND IMAGE */
+.wrapper img:nth-child(1) {
+	position: absolute;
+	bottom: 2%;
+	left: 2%;
+	width: 96%;
+	height: 96%;
+	object-fit: cover;
+	border-radius: 6px;
+	opacity: 1;
+	transition: opacity 0.5s ease-in-out;
+}
+.wrapper:hover img:nth-child(1) {
+	opacity: 0;
+}
+
+/*? HOVERED IMAGE */
+.wrapper img:nth-child(2) { 
+	position: absolute;
+	bottom: 0;
+	left: 90px;
+	width: 130%;
+	transform: translate(-25%);
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+.wrapper:hover img:nth-child(2) {
+	opacity: 1;
+}
+
+.info {
+	position: absolute;
+	top: 80%;
+	left: -20px;
+	color: var(--offWhite);
+	font-size: 40px;
+	rotate: -10deg;
+	text-shadow: 0 0 10px var(--lightYellow);
+	transition: 0.5s;
+}
+
+.wrapper:hover .info {
+	color: var(--lightGreen);
+	text-shadow: 0 0 10px var(--BrightPink);
+}
+
+
+/*? 2ND IMAGE TRANSPARENT BACKGROUND EFFECT */
+.ver2:hover {
+	background: transparent;
+}
