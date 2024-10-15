@@ -1,8 +1,12 @@
-### Glow Border Animation with Image Hover Effects
+# Glow Border Animation with Image Hover Effects
 
 **Description:**
 
 This HTML, CSS code creates a visually appealing animation where two images are displayed within a container. Upon hovering over the container, a glowing border effect appears that rotates, and the images transition smoothly.
+
+**Preview:**
+
+![Project GIF](./glow.gif)
 
 **Features:**
 
